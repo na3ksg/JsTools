@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>誕生日計算の練習</title>
+</head>
+<body style="background-color:#DCDCDC">
+	<h1>誕生日計算の練習</h1>
+	<p>誕生日：<input type="text" name="birthday" id="birthday" value="1989-02-09"></p>
+	<p><input type="button" value="計算" onclick="getAge();"></p>
+	<p>生まれてから<span id="daysPast">???</span>日経過していて、だいだい<span id="age">???</span>歳だよ</p>
+	<script>
+	function getAge() {
+		var birthday = document.getElementById('birthday').value;
+		var d1 = new Date(birthday);
+		var d2 = new Date();
+		var diff = d2.getTime() - d1.getTime();
+		var daysPast = Math.floor(diff / (1000 * 60 * 60 * 24));
+		var age = Math.floor(daysPast / 365.25);
+		document.getElementById('daysPast').innerHTML = daysPast;
+		document.getElementById('age').innerHTML = age;
+
+	}
+	</script>
+</body>
+</html>
