@@ -11,61 +11,61 @@
 	<input type="button" value="Stop!" id="stop">
 	<input type="button" value="Reset!" id="reset">
 	<script>
-	(function() {
-	var startTime,
-		stopTime,
-		running = false,
-		timerId;
+		(function() {
+			var startTime,
+			stopTime,
+			running = false,
+			timerId;
 
-	document.getElementById('run').onclick = function() {
-		run();
-	}
+			document.getElementById('run').onclick = function() {
+				run();
+			}
 
-	document.getElementById('stop').onclick = function() {
-		stop();
-	}
+			document.getElementById('stop').onclick = function() {
+				stop();
+			}
 
-	document.getElementById('reset').onclick = function() {
-		reset();
-	}
+			document.getElementById('reset').onclick = function() {
+				reset();
+			}
 
-	function run() {
+			function run() {
 
-		if (running) return;
+				if (running) return;
 
-		running = true;
+				running = true;
 
-		if (stopTime) {
-			startTime = startTime + (new Date()).getTime() - stopTime;
-		}
+				if (stopTime) {
+					startTime = startTime + (new Date()).getTime() - stopTime;
+				}
 
-		if (!startTime) {
-			startTime = (new Date()).getTime();
-		}
+				if (!startTime) {
+					startTime = (new Date()).getTime();
+				}
 
-		timer();
-	}
-
-	function timer() {
-		document.getElementById('sec').innerHTML = (((new Date()).getTime() - startTime) / 1000).toFixed(2);
-			timerId = setTimeout(function() {
 				timer();
-			},100);
-	}
+			}
 
-	function stop() {
-		if (!running) return false;
-		running = false;
-		clearTimeout(timerId);
-		stopTime = (new Date()).getTime();
-	}
+			function timer() {
+				document.getElementById('sec').innerHTML = (((new Date()).getTime() - startTime) / 1000).toFixed(2);
+				timerId = setTimeout(function() {
+					timer();
+				},100);
+			}
 
-	function reset() {
-		if (running) return;
-		startTime = undefined;
-		document.getElementById('sec').innerHTML = '0.00';
-	}
-})();
+			function stop() {
+				if (!running) return false;
+				running = false;
+				clearTimeout(timerId);
+				stopTime = (new Date()).getTime();
+			}
+
+			function reset() {
+				if (running) return;
+				startTime = undefined;
+				document.getElementById('sec').innerHTML = '0.00';
+			}
+		})();
 	</script>
 </body>
 </html>
