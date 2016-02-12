@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>正規表現の練習</title>
+</head>
+<body>
+	<h1>正規表現の練習</h1>
+	<p>郵便番号を入力してね</p>
+	<form action="" method="post">
+		<p><input id="text_box" type="text" name="text"><span id="note"></span></p>
+		<p><input type="submit" value="送信"></p>
+	</form>
+	<script>
+		var textBox = document.getElementById('text_box');
+
+		// キーボードが押される際に実行される処理を登録
+		textBox.addEventListener('keyup',function() {
+			var note = document.getElementById('note');
+			var result = textBox.value.match(/^(\d{3})-?(\d{4})$/);
+			if (result) {
+				note.textContent = "OK!";
+				console.log(result);
+				console.log("郵便番号前半3桁：" + RegExp.$1);
+				console.log("郵便番号後半4桁：" + RegExp.$2);
+			} else {
+				note.textContent = "";
+			}
+		});
+	</script>
+</body>
+</html>
