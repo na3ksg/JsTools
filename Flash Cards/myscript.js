@@ -6,7 +6,9 @@
         { 'en': 'push', 'ja': '押す' },
         { 'en': 'pull', 'ja': '引く' },
         { 'en': 'run', 'ja': '走る' },
-        { 'en': 'walk', 'ja': '歩く' }
+        { 'en': 'walk', 'ja': '歩く' },
+        { 'en': 'learn', 'ja': '習う' },
+        { 'en': 'speak', 'ja': '話す' },
     ];
 
     var card = document.getElementById('card');
